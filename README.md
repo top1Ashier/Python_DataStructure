@@ -1,57 +1,77 @@
-- [Python 数据结构与算法](#python--------)
-  * [线性结构(Linear structure)](#-----linear-structure-)
-    + [栈(Stack)](#--stack-)
-      - [栈的抽象数据类型(ADT of Stack):](#---------adt-of-stack--)
-      - [栈的应用示例](#------)
-        * [简单括号匹配](#------)
-        * [表达式中缀转后缀](#--------)
-    + [队列(Queue)](#---queue-)
-      - [队列的抽象数据类型(ADT of Queue):](#----------adt-of-queue--)
-      - [队列的应用示例](#-------)
-        * [热土豆问题](#-----)
-        * [打印任务](#----)
-    + [双端队列(Deque)](#-----deque-)
-      - [双端队列的抽象数据类型(ADT of Deque)](#------------adt-of-deque-)
-      - [双端队列的应用示例](#---------)
-        * [回文词(parlindorme)的判定](#----parlindorme----)
-    + [无序表(UnOrderList)](#----unorderlist-)
-      - [无序表的抽象数据类型(ADT of UnOrderList)](#-----------adt-of-unorderlist-)
-  * [递归](#--)
-    + [递归调用的实现](#-------)
-    + [递归示例](#----)
-      - [整数转换为任意进制](#---------)
-      - [递归可视化:分形树(Fractal tree)](#----------fractal-tree-)
-      - [递归可视化:谢尔宾斯基三角形(Sierpinski triangle)](#---------------sierpinski-triangle-)
-      - [递归可视化:汉诺塔问题](#-----------)
-  * [查找和排序算法](#-------)
-    + [顺序查找(Sequential Search)](#-----sequential-search-)
-    + [二分查找(Binary Search)](#-----binary-search-)
-    + [冒泡排序(Bubble Sort)](#-----bubble-sort-)
-    + [选择排序(Selection Sort)](#-----selection-sort-)
-    + [插入排序(Insertion Sort)](#-----insertion-sort-)
-    + [归并排序(Merge Sort)](#-----merge-sort-)
-    + [快速排序(Qucik Sort)](#-----qucik-sort-)
-    + [哈希表(Hash table)](#----hash-table-)
-      - [哈希函数设计](#------)
-    + [映射抽象数据类型及其Python实现](#----------python--)
-  * [非线性结构](#-----)
-    + [树](#-)
-      - [树的实现](#----)
-        * [嵌套列表法](#-----)
-        * [节点链接法](#-----)
-      - [树的应用:表达式解析](#----------)
-      - [树的遍历(Tree Traversals)](#-----tree-traversals-)
-        * [前序遍历(preorder)](#-----preorder-)
-        * [中序遍历(inorder)](#-----inorder-)
-        * [后序遍历(postorder)](#-----postorder-)
-      - [二叉堆(Binary Heap)实现优先队列(Priority Queue)](#----binary-heap--------priority-queue-)
-      - [二叉查找树(Binary Search Tree)](#------binary-search-tree-)
-      - [二叉查找树(Binary Search Tree)](#------binary-search-tree--1)
-        * [AVL树](#avl-)
-    + [图(Graph)](#--graph-)
-      - [图的抽象数据类型(ADT of Graph)](#---------adt-of-graph-)
+Table of Contents
+=================
 
-# Python 数据结构与算法
+Header: X-Ratelimit-Used=2
+Header: Strict-Transport-Security=max-age=31536000; includeSubdomains; preload
+Header: Referrer-Policy=origin-when-cross-origin, strict-origin-when-cross-origin
+Header: Server=GitHub.com
+Header: X-Commonmarker-Version=0.21.0
+Header: Access-Control-Expose-Headers=ETag, Link, Location, Retry-After, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Used, X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval, X-GitHub-Media-Type, Deprecation, Sunset
+Header: X-Frame-Options=deny
+Header: Content-Type=text/html;charset=utf-8
+Header: X-Ratelimit-Remaining=58
+Header: Date=Fri, 05 Mar 2021 18:31:16 GMT
+Header: X-Github-Request-Id=449E:7C9E:49761D:5070FE:604278F2
+Header: Access-Control-Allow-Origin=*
+Header: X-Content-Type-Options=nosniff
+Header: X-Xss-Protection=1; mode=block
+Header: Content-Security-Policy=default-src 'none'
+Header: Vary=Accept-Encoding, Accept, X-Requested-With
+Header: X-Ratelimit-Limit=60
+Header: X-Ratelimit-Reset=1614972596
+- [Table of Contents](#table-of-contents)
+  - [线性结构(Linear structure)](#线性结构linear-structure)
+    - [栈(Stack)](#栈stack)
+      - [栈的抽象数据类型(ADT of Stack):](#栈的抽象数据类型adt-of-stack)
+      - [栈的应用示例](#栈的应用示例)
+        - [简单括号匹配](#简单括号匹配)
+        - [表达式中缀转后缀](#表达式中缀转后缀)
+    - [队列(Queue)](#队列queue)
+      - [队列的抽象数据类型(ADT of Queue):](#队列的抽象数据类型adt-of-queue)
+      - [队列的应用示例](#队列的应用示例)
+        - [热土豆问题](#热土豆问题)
+        - [打印任务](#打印任务)
+    - [双端队列(Deque)](#双端队列deque)
+      - [双端队列的抽象数据类型(ADT of Deque)](#双端队列的抽象数据类型adt-of-deque)
+      - [双端队列的应用示例](#双端队列的应用示例)
+        - [回文词(parlindorme)的判定](#回文词parlindorme的判定)
+    - [无序表(UnOrderList)](#无序表unorderlist)
+      - [无序表的抽象数据类型(ADT of UnOrderList)](#无序表的抽象数据类型adt-of-unorderlist)
+  - [递归](#递归)
+    - [递归调用的实现](#递归调用的实现)
+    - [递归示例](#递归示例)
+      - [整数转换为任意进制](#整数转换为任意进制)
+      - [递归可视化:分形树(Fractal tree)](#递归可视化分形树fractal-tree)
+      - [递归可视化:谢尔宾斯基三角形(Sierpinski triangle)](#递归可视化谢尔宾斯基三角形sierpinski-triangle)
+      - [递归可视化:汉诺塔问题](#递归可视化汉诺塔问题)
+  - [查找和排序算法](#查找和排序算法)
+    - [顺序查找(Sequential Search)](#顺序查找sequential-search)
+    - [二分查找(Binary Search)](#二分查找binary-search)
+    - [冒泡排序(Bubble Sort)](#冒泡排序bubble-sort)
+    - [选择排序(Selection Sort)](#选择排序selection-sort)
+    - [插入排序(Insertion Sort)](#插入排序insertion-sort)
+    - [归并排序(Merge Sort)](#归并排序merge-sort)
+    - [快速排序(Qucik Sort)](#快速排序qucik-sort)
+    - [哈希表(Hash table)](#哈希表hash-table)
+      - [哈希函数设计](#哈希函数设计)
+    - [映射抽象数据类型及其Python实现](#映射抽象数据类型及其python实现)
+  - [非线性结构](#非线性结构)
+    - [树](#树)
+      - [树的实现](#树的实现)
+        - [嵌套列表法](#嵌套列表法)
+        - [节点链接法](#节点链接法)
+      - [树的应用:表达式解析](#树的应用表达式解析)
+      - [树的遍历(Tree Traversals)](#树的遍历tree-traversals)
+        - [前序遍历(preorder)](#前序遍历preorder)
+        - [中序遍历(inorder)](#中序遍历inorder)
+        - [后序遍历(postorder)](#后序遍历postorder)
+      - [二叉堆(Binary Heap)实现优先队列(Priority Queue)](#二叉堆binary-heap实现优先队列priority-queue)
+      - [二叉查找树(Binary Search Tree)](#二叉查找树binary-search-tree)
+      - [二叉查找树(Binary Search Tree)](#二叉查找树binary-search-tree-1)
+        - [AVL树](#avl树)
+    - [图(Graph)](#图graph)
+      - [图的抽象数据类型(ADT of Graph)](#图的抽象数据类型adt-of-graph)
+
 
 ## 线性结构(Linear structure)
 - 线性结构是一种有序数据项的集合，其中每个数据项都有唯一的前驱和后继。线性结构总有两端，在不同的情况下，两端的称呼不一样。两端的称呼并不是关键，不同线性结构的关键区别在于数据项增减的方式。
